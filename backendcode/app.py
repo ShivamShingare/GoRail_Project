@@ -210,7 +210,7 @@ app = FastAPI()
 # Allow your React frontend to access the backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Frontend URL
+    allow_origins=["*"],  # Frontend URL
     allow_credentials=True,
     allow_methods=["*"],  # allow GET, POST, PUT, DELETE, etc.
     allow_headers=["*"],  # allow custom headers
