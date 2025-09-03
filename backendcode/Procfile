@@ -1,1 +1,2 @@
-gunicorn -k uvicorn.workers.UvicornWorker main:app
+gunicorn -k uvicorn.workers.UvicornWorker backendcode.main:app
+
