@@ -35,8 +35,10 @@ from passlib.context import CryptContext
 
 # -------- Configuration --------
 DATABASE_URL = os.environ.get(
-    "DATABASE_URL", "postgresql://root:root123@localhost:5432/railway_db"
+    "DATABASE_URL",
+    "postgresql://gorail_db_adb0_user:mn2El92se6WArmRAIFjoM2RpB9FSH0Xy@dpg-d42qb315pdvs73dbdu20-a.oregon-postgres.render.com/gorail_db_adb0?sslmode=require"
 )
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -215,7 +217,10 @@ app.add_middleware(
     allow_methods=["*"],  # allow GET, POST, PUT, DELETE, etc.
     allow_headers=["*"],  # allow custom headers
 )
-
+# -------- Root endpoint for Render health check --------
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "🚆 GoRail FastAPI backend is running!"}
 
 # -------- Seed demo trains --------
 def parse_price(price_str):
